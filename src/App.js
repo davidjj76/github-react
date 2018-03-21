@@ -65,7 +65,12 @@ class App extends Component {
         <div>USER DATA</div>
         <div>
           {userData && JSON.stringify({
-            orgs: userData.orgs,
+            orgs: userData.orgs.map(o => ({
+              avatar_url: o.avatar_url,
+              description: o.description,
+              login: o.login,
+              url: o.url,
+            })),
             user: {
               avatar_url: userData.user.avatar_url,
               bio: userData.user.bio,
