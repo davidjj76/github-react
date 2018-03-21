@@ -4,7 +4,7 @@ import { getUserData, getRepos } from './services/github-api';
 
 class App extends Component {
   state = {
-    username: '',
+    username: 'davidjj76',
     repos: null,
     userData: null,
   };
@@ -13,8 +13,10 @@ class App extends Component {
     const { username } = this.state;
     if (username) {
       const repos = await getRepos(username);
+      console.log('repos', repos);
       this.setState({ repos }, async () => {
         const userData = await getUserData(username);
+        console.log('userData', userData);
         this.setState({ userData }, () => {
           this.setState({ username: '' });
         });
@@ -51,11 +53,36 @@ class App extends Component {
         </form>
         <div>REPOS</div>
         <div>
-          {repos && JSON.stringify(repos)}
+          {repos && JSON.stringify(repos.map(r => ({
+            created_at: r.created_at,
+            description: r.description,
+            fork: r.fork,
+            language: r.language,
+            name: r.name,
+            url: r.url,
+          })))}
         </div>
         <div>USER DATA</div>
         <div>
-          {userData && JSON.stringify(userData)}
+          {userData && JSON.stringify({
+            orgs: userData.orgs,
+            user: {
+              avatar_url: userData.user.avatar_url,
+              bio: userData.user.bio,
+              blog: userData.user.blog,
+              company: userData.user.company,
+              created_at: userData.user.created_at,
+              email: userData.user.email,
+              followers: userData.user.followers,
+              following: userData.user.following,
+              location: userData.user.location,
+              login: userData.user.login,
+              name: userData.user.name,
+              public_gists: userData.user.public_gists,
+              public_repos: userData.user.public_repos,
+              url: userData.user.url,
+            }
+          })}
         </div>
       </div>
     );
