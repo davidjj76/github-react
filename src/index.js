@@ -17,8 +17,6 @@ const store = createStore(
 );
  sagaMiddleware.run(rootSaga);
 
-store.dispatch({ type: '@USER/FETCH_REQUEST', username: 'davidjj76' });
-
 render(
   <Provider store={store}>
     <App />
