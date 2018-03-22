@@ -1,21 +1,29 @@
-import { connect } from 'react-redux';
-import { branch, compose, lifecycle, renderComponent } from 'recompose';
+import React from 'react';
 
-import User from './user';
-import * as actions from './actions';
-import withFetchRequest from '../../modules/withFetchRequest';
+const User = ({ data }) => (
+  <div>
+    <div>USER DATA</div>
+    <div>
+      {data && JSON.stringify({
+        user: {
+          avatar_url: data.avatar_url,
+          bio: data.bio,
+          blog: data.blog,
+          company: data.company,
+          created_at: data.created_at,
+          email: data.email,
+          followers: data.followers,
+          following: data.following,
+          location: data.location,
+          login: data.login,
+          name: data.name,
+          public_gists: data.public_gists,
+          public_repos: data.public_repos,
+          url: data.url,
+        }
+      })}
+    </div>
+  </div>
+);
 
-const mapStateToProps = state => ({
-  data: state.user.data,
-  error: state.user.error,
-  loading: state.user.loading,
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchRequest: username => dispatch(actions.fetchRequest(username)),
-});
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withFetchRequest('davidjj76'),
-)(User);
+export default User;

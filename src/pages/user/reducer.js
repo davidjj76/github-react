@@ -1,26 +1,29 @@
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_ERROR } from './actions';
 
-const user = (state = {}, action) => {
+const defaultState = {
+  data: null,
+  error: null,
+  loading: false,
+};
+
+const user = (state = defaultState, action) => {
   switch (action.type) {
     case FETCH_REQUEST:
       return {
-        data: null,
-        error: null,
+        ...defaultState,
         loading: true,
       };
 
       case FETCH_SUCCESS:
       return {
+        ...defaultState,
         data: action.data,
-        error: null,
-        loading: false,
       };
 
     case FETCH_ERROR:
     return {
-      data: null,
+      ...defaultState,
       error: action.error,
-      loading: false,
     };
 
     default:
