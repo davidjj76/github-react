@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import User from './pages/User';
+import User from '../pages/User';
 
 class App extends Component {
   // state = {

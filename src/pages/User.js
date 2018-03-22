@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { branch, compose, lifecycle, renderComponent } from 'recompose';
+import { compose } from 'recompose';
 
 import User from './user';
 import * as actions from './user/actions';

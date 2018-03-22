@@ -1,7 +1,7 @@
 import { branch, compose, lifecycle, mapProps, renderComponent } from 'recompose';
 
-import Loader from '../components/loader';
-import Error from '../components/error';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 const mapData = ({ data }) => ({ data });
 const mapLoading = () => ({});
