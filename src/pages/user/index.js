@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const User = ({ data }) => (
   <div>
@@ -25,5 +26,13 @@ const User = ({ data }) => (
     </div>
   </div>
 );
+
+User.propTypes = {
+  data: PropTypes.object,
+};
+
+User.defaultProps = {
+  data: {},
+};
 
 export default User;

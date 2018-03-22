@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Error = ({ error }) => (
   <div>
@@ -6,5 +7,9 @@ const Error = ({ error }) => (
     <div>{JSON.stringify(error)}</div>
   </div>
 );
+
+Error.propTypes = {
+  error: PropTypes.object.isRequired,
+};
 
 export default Error;
