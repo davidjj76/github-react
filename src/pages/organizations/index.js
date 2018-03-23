@@ -19,7 +19,7 @@ const Organizations = ({ data }) => (
 );
 
 Organizations.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.arrayOf(PropTypes.object),
 };
 
 Organizations.defaultProps = {
