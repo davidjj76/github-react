@@ -6,7 +6,7 @@ import * as actions from './user/actions';
 import withFetchRequest from '../modules/withFetchRequest';
 
 const mapStateToProps = state => ({
-  data: state.user.data,
+  data: state.user.data.user,
   error: state.user.error,
   loading: state.user.loading,
   search: state.search,

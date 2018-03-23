@@ -6,7 +6,7 @@ import * as API from '../../services/github-api';
 export function* fetchData(action) {
   try {
     const data = yield call(API.getUserData, action.username);
-    yield put({ type: actions.FETCH_SUCCESS, data: data.user });
+    yield put({ type: actions.FETCH_SUCCESS, data });
   } catch (error) {
     yield put({ type: actions.FETCH_ERROR, error: error.response });
   }

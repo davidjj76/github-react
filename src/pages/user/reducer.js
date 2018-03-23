@@ -1,7 +1,10 @@
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_ERROR } from './actions';
 
 const defaultState = {
-  data: null,
+  data: {
+    user: null,
+    orgs: null,
+  },
   error: null,
   loading: false,
 };
