@@ -3,6 +3,7 @@ import { compose, mapProps, withState, withHandlers } from 'recompose';
 
 import Search from './search';
 import * as actions from './search/actions';
+import pickAll from '../utils/pickAll';
 
 const mapDispatchToProps = dispatch => ({
   setText: text => dispatch(actions.setText(text)),
@@ -15,12 +16,6 @@ const onSubmit = ({ search, setText }) => event => {
   setText(search);
 };
 
-const mapSearch = ({ onChange, onSubmit, search }) => ({
-  onChange,
-  onSubmit,
-  search,
-});
-
 export default compose(
   connect(null, mapDispatchToProps),
   withState('search', 'setSearch', ''),
@@ -28,5 +23,5 @@ export default compose(
     onChange,
     onSubmit,
   }),
-  mapProps(mapSearch),
+  mapProps(pickAll('onChange', 'onSubmit', 'search')),
 )(Search);

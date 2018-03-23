@@ -4,12 +4,15 @@ import { compose } from 'recompose';
 import Repos from './repos';
 import * as actions from './repos/actions';
 import withFetchRequest from '../modules/withFetchRequest';
+import applySpec from '../utils/applySpec';
+import { getRepos, getError, getLoading } from './repos/selectors';
+import { getSearch } from './search/selectors';
 
-const mapStateToProps = state => ({
-  data: state.repos.data.repos,
-  error: state.repos.error,
-  loading: state.repos.loading,
-  search: state.search,
+const mapStateToProps = applySpec({
+  data: getRepos,
+  error: getError,
+  loading: getLoading,
+  search: getSearch,
 });
 
 const mapDispatchToProps = dispatch => ({

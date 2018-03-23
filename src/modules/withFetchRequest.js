@@ -8,15 +8,19 @@ import {
 
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import empty from '../utils/empty';
+import pickAll from '../utils/pickAll';
+import pipe from '../utils/pipe';
+import prop from '../utils/prop';
 
-const mapData = ({ data }) => ({ data });
-const mapLoading = () => ({});
-const mapError = ({ error }) => ({ error });
+const mapData = pickAll('data');
+const mapLoading = empty();
+const mapError = pipe(pickAll('error'), Boolean);
 
-const isLoading = ({ loading }) => loading;
+const isLoading = prop('loading');
 const renderLoader = compose(mapProps(mapLoading), renderComponent(Loader));
 
-const hasError = ({ error }) => !!error;
+const hasError = prop('error');
 const renderError = compose(mapProps(mapError), renderComponent(Error));
 
 const withFetchRequest = compose(
