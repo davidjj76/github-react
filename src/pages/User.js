@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   data: state.user.data,
   error: state.user.error,
   loading: state.user.loading,
+  search: state.search,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,5 +18,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withFetchRequest('davidjj76'),
+  withFetchRequest,
 )(User);

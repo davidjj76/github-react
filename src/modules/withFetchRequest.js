@@ -13,10 +13,17 @@ const renderLoader = compose(mapProps(mapLoading), renderComponent(Loader));
 const hasError = ({ error }) => !!error;
 const renderError = compose(mapProps(mapError), renderComponent(Error));
 
-const withFetchRequest = (fetchParams) => compose(
+const withFetchRequest = compose(
   lifecycle({
     componentDidMount() {
-      this.props.fetchRequest(fetchParams);
+      const { fetchRequest, search } = this.props;
+      search && fetchRequest(search);
+    },
+    componentDidUpdate({ search: prevSearch }) {
+      const { fetchRequest, search } = this.props;
+      if(search !== prevSearch) {
+        search && fetchRequest(search);
+      }
     }
   }),
   branch(isLoading, renderLoader),
