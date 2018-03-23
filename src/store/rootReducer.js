@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
-import user from '../pages/user/reducer';
+import repos from '../pages/repos/reducer';
 import search from '../pages/search/reducer';
+import user from '../pages/user/reducer';
 
 const rootReducer = combineReducers({
-  user,
+  repos,
   search,
+  user,
 });
 
 export default rootReducer;
