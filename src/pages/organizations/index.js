@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Repos = ({ data }) => (
+const Organizations = ({ data }) => (
   <div>
-    <div>REPOS</div>
+    <div>ORGANIZATIONS</div>
     <div>
       {data &&
         JSON.stringify(
           data.map(r => ({
-            created_at: r.created_at,
+            avatar_url: r.avatar_url,
             description: r.description,
-            fork: r.fork,
-            language: r.language,
-            name: r.name,
+            login: r.login,
             url: r.url,
           })),
         )}
@@ -20,12 +18,12 @@ const Repos = ({ data }) => (
   </div>
 );
 
-Repos.propTypes = {
+Organizations.propTypes = {
   data: PropTypes.object,
 };
 
-Repos.defaultProps = {
+Organizations.defaultProps = {
   data: [],
 };
 
-export default Repos;
+export default Organizations;

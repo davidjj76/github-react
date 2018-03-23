@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 
 import Repos from '../pages/Repos';
+import Organizations from '../pages/Organizations';
 import Search from '../pages/Search';
 import User from '../pages/User';
-
-const Organizations = () => <div>Organizations</div>;
 
 class App extends Component {
   render() {
