@@ -14,17 +14,17 @@ const user = (state = defaultState, action) => {
         loading: true,
       };
 
-      case FETCH_SUCCESS:
+    case FETCH_SUCCESS:
       return {
         ...defaultState,
         data: action.data,
       };
 
     case FETCH_ERROR:
-    return {
-      ...defaultState,
-      error: action.error,
-    };
+      return {
+        ...defaultState,
+        error: action.error,
+      };
 
     default:
       return state;

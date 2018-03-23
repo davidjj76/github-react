@@ -7,7 +7,4 @@ import configureStore from './store';
 
 const store = configureStore();
 
-render(
-  <Root store={store} />,
-  document.getElementById('root')
-);
+render(<Root store={store} />, document.getElementById('root'));

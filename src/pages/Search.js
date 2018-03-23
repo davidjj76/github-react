@@ -15,7 +15,11 @@ const onSubmit = ({ search, setText }) => event => {
   setText(search);
 };
 
-const mapSearch = ({ onChange, onSubmit, search }) => ({ onChange, onSubmit, search });
+const mapSearch = ({ onChange, onSubmit, search }) => ({
+  onChange,
+  onSubmit,
+  search,
+});
 
 export default compose(
   connect(null, mapDispatchToProps),

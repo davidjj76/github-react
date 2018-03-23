@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Search = ({
-  onChange,
-  onSubmit,
-  search,
-}) => (
+const Search = ({ onChange, onSubmit, search }) => (
   <form onSubmit={onSubmit}>
-    <input
-      type="text"
-      value={search}
-      onChange={onChange}
-    />
+    <input type="text" value={search} onChange={onChange} />
   </form>
 );
 

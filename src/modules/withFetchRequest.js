@@ -1,4 +1,10 @@
-import { branch, compose, lifecycle, mapProps, renderComponent } from 'recompose';
+import {
+  branch,
+  compose,
+  lifecycle,
+  mapProps,
+  renderComponent,
+} from 'recompose';
 
 import Loader from '../components/Loader';
 import Error from '../components/Error';
@@ -21,10 +27,10 @@ const withFetchRequest = compose(
     },
     componentDidUpdate({ search: prevSearch }) {
       const { fetchRequest, search } = this.props;
-      if(search !== prevSearch) {
+      if (search !== prevSearch) {
         search && fetchRequest(search);
       }
-    }
+    },
   }),
   branch(isLoading, renderLoader),
   branch(hasError, renderError),

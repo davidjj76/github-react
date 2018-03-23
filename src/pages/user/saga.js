@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import * as actions from './actions'
+import * as actions from './actions';
 import * as API from '../../services/github-api';
 
 export function* fetchData(action) {
@@ -13,5 +13,5 @@ export function* fetchData(action) {
 }
 
 export default function* watchFetchRequest() {
-  yield takeLatest(actions.FETCH_REQUEST, fetchData)
+  yield takeLatest(actions.FETCH_REQUEST, fetchData);
 }
