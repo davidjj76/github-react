@@ -21,7 +21,7 @@ const Repos = ({ data }) => (
 );
 
 Repos.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.arrayOf(PropTypes.object),
 };
 
 Repos.defaultProps = {
