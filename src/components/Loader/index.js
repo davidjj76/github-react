@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import * as Styled from './loader/styles';
+import * as Styled from './styles';
 
 const Loader = ({ children, ...style }) => (
   <Styled.Wrapper>
