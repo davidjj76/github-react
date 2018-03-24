@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, setDisplayName } from 'recompose';
+import { compose } from 'recompose';
 
 import User from './User';
 import UserLoader from './components/UserLoader';
@@ -25,7 +25,6 @@ const config = {
 };
 
 export default compose(
-  setDisplayName('USER'),
   connect(mapStateToProps, mapDispatchToProps),
   withFetchRequest(config),
 )(User);

@@ -15,13 +15,13 @@ import prop from '../utils/prop';
 
 const mapData = pickAll('data');
 const mapLoading = empty();
-const mapError = pipe(pickAll('error'), Boolean);
+const mapError = pickAll('error');
 
 const isLoading = prop('loading');
 const renderLoader = loader =>
   compose(mapProps(mapLoading), renderComponent(loader));
 
-const hasError = prop('error');
+const hasError = pipe(prop('error'), Boolean);
 const renderError = compose(mapProps(mapError), renderComponent(Error));
 
 const withFetchRequest = (config = { loader: Loader }) =>
