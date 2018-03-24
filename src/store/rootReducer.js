@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import repos from '../pages/repos/reducer';
+import repos from '../pages/Repos/reducer';
 import search from '../pages/Search/reducer';
 import user from '../pages/User/reducer';
 

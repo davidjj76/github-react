@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
-import Repos from './repos';
-import ReposLoader from './repos/components/ReposLoader';
-import * as actions from './repos/actions';
-import withFetchRequest from '../modules/withFetchRequest';
-import applySpec from '../utils/applySpec';
-import { getRepos, getError, getLoading } from './repos/selectors';
-import { getSearch } from './Search/selectors';
+import Repos from './Repos';
+import ReposLoader from './components/ReposLoader';
+import * as actions from './actions';
+import withFetchRequest from '../../modules/withFetchRequest';
+import applySpec from '../../utils/applySpec';
+import { getRepos, getError, getLoading } from './selectors';
+import { getSearch } from '../Search/selectors';
 
 const mapStateToProps = applySpec({
   data: getRepos,
