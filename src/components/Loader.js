@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Loader = () => <div>Loading...</div>;
+import * as Styled from './loader/styles';
+
+const Loader = () => <Styled.Loader />;
 
 export default Loader;

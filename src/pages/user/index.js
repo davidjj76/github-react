@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const User = ({ data }) => (
   <div>
-    <div>USER DATA</div>
+    <h2>USER DATA</h2>
     <div>
       {data &&
         JSON.stringify({
