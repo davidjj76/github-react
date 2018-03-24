@@ -5,7 +5,7 @@ import Organizations from './organizations';
 import OrganizationsLoader from './organizations/components/OrganizationsLoader';
 import withFetchRequest from '../modules/withFetchRequest';
 import applySpec from '../utils/applySpec';
-import { getOrganizations, getError, getLoading } from './user/selectors';
+import { getOrganizations, getError, getLoading } from './User/selectors';
 
 const mapStateToProps = applySpec({
   data: getOrganizations,

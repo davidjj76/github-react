@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { compose, setDisplayName } from 'recompose';
 
-import User from './user';
-import UserLoader from './user/components/UserLoader';
-import * as actions from './user/actions';
-import withFetchRequest from '../modules/withFetchRequest';
-import applySpec from '../utils/applySpec';
-import { getUser, getError, getLoading } from './user/selectors';
-import { getSearch } from './Search/selectors';
+import User from './User';
+import UserLoader from './components/UserLoader';
+import * as actions from './actions';
+import withFetchRequest from '../../modules/withFetchRequest';
+import applySpec from '../../utils/applySpec';
+import { getUser, getError, getLoading } from './selectors';
+import { getSearch } from '../Search/selectors';
 
 const mapStateToProps = applySpec({
   data: getUser,
