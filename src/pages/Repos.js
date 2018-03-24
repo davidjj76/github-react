@@ -7,7 +7,7 @@ import * as actions from './repos/actions';
 import withFetchRequest from '../modules/withFetchRequest';
 import applySpec from '../utils/applySpec';
 import { getRepos, getError, getLoading } from './repos/selectors';
-import { getSearch } from './search/selectors';
+import { getSearch } from './Search/selectors';
 
 const mapStateToProps = applySpec({
   data: getRepos,

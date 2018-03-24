@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { compose, mapProps, withState, withHandlers } from 'recompose';
 
-import Search from './search';
-import * as actions from './search/actions';
-import pickAll from '../utils/pickAll';
+import Search from './Search';
+import * as actions from './actions';
+import pickAll from '../../utils/pickAll';
 
 const mapDispatchToProps = dispatch => ({
   setText: text => dispatch(actions.setText(text)),
