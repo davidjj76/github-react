@@ -18,27 +18,29 @@ const mapLoading = empty();
 const mapError = pipe(pickAll('error'), Boolean);
 
 const isLoading = prop('loading');
-const renderLoader = compose(mapProps(mapLoading), renderComponent(Loader));
+const renderLoader = loader =>
+  compose(mapProps(mapLoading), renderComponent(loader));
 
 const hasError = prop('error');
 const renderError = compose(mapProps(mapError), renderComponent(Error));
 
-const withFetchRequest = compose(
-  lifecycle({
-    componentDidMount() {
-      const { fetchRequest, search } = this.props;
-      search && fetchRequest(search);
-    },
-    componentDidUpdate({ search: prevSearch }) {
-      const { fetchRequest, search } = this.props;
-      if (search !== prevSearch) {
+const withFetchRequest = (config = { loader: Loader }) =>
+  compose(
+    lifecycle({
+      componentDidMount() {
+        const { fetchRequest, search } = this.props;
         search && fetchRequest(search);
-      }
-    },
-  }),
-  branch(isLoading, renderLoader),
-  branch(hasError, renderError),
-  mapProps(mapData),
-);
+      },
+      componentDidUpdate({ search: prevSearch }) {
+        const { fetchRequest, search } = this.props;
+        if (search !== prevSearch) {
+          search && fetchRequest(search);
+        }
+      },
+    }),
+    branch(isLoading, renderLoader(config.loader)),
+    branch(hasError, renderError),
+    mapProps(mapData),
+  );
 
 export default withFetchRequest;

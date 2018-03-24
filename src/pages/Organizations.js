@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
 import Organizations from './organizations';
+import OrganizationsLoader from './organizations/components/OrganizationsLoader';
 import withFetchRequest from '../modules/withFetchRequest';
 import applySpec from '../utils/applySpec';
 import { getOrganizations, getError, getLoading } from './user/selectors';
@@ -12,6 +13,10 @@ const mapStateToProps = applySpec({
   loading: getLoading,
 });
 
-export default compose(connect(mapStateToProps), withFetchRequest)(
+const config = {
+  loader: OrganizationsLoader,
+};
+
+export default compose(connect(mapStateToProps), withFetchRequest(config))(
   Organizations,
 );

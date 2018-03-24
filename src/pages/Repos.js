@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
 import Repos from './repos';
+import ReposLoader from './repos/components/ReposLoader';
 import * as actions from './repos/actions';
 import withFetchRequest from '../modules/withFetchRequest';
 import applySpec from '../utils/applySpec';
@@ -19,7 +20,11 @@ const mapDispatchToProps = dispatch => ({
   fetchRequest: username => dispatch(actions.fetchRequest(username)),
 });
 
+const config = {
+  loader: ReposLoader,
+};
+
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withFetchRequest,
+  withFetchRequest(config),
 )(Repos);

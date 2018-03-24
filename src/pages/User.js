@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, setDisplayName } from 'recompose';
 
 import User from './user';
+import UserLoader from './user/components/UserLoader';
 import * as actions from './user/actions';
 import withFetchRequest from '../modules/withFetchRequest';
 import applySpec from '../utils/applySpec';
@@ -19,7 +20,12 @@ const mapDispatchToProps = dispatch => ({
   fetchRequest: username => dispatch(actions.fetchRequest(username)),
 });
 
+const config = {
+  loader: UserLoader,
+};
+
 export default compose(
+  setDisplayName('USER'),
   connect(mapStateToProps, mapDispatchToProps),
-  withFetchRequest,
+  withFetchRequest(config),
 )(User);
