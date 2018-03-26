@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Media from 'react-media';
 import { NavLink, Route, Switch } from 'react-router-dom';
 
+import UserInfoButton from './components/UserInfoButton';
+
 import withToggle from '../../modules/withToggle';
 import Repos from '../../pages/Repos';
 import Organizations from '../../pages/Organizations';
@@ -48,12 +50,7 @@ const App = ({ isOverlayOpen, onToggle }) => (
               <Styled.Overlay isOpen={isOverlayOpen} top={HEADER_HEIGHT}>
                 <User />
               </Styled.Overlay>
-              <button
-                style={{ position: 'fixed', bottom: '4em', right: '1em' }}
-                onClick={onToggle}
-              >
-                {isOverlayOpen ? 'x' : '+'}
-              </button>
+              <UserInfoButton onClick={onToggle} toggled={isOverlayOpen} />
             </React.Fragment>
           ) : (
             <Styled.Aside>
