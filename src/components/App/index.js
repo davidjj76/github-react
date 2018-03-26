@@ -1,46 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Media from 'react-media';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
+import AppMenu from './components/AppMenu';
 import UserInfoButton from './components/UserInfoButton';
 
 import withToggle from '../../modules/withToggle';
 import Repos from '../../pages/Repos';
 import Organizations from '../../pages/Organizations';
-import Search from '../../pages/Search';
 import User from '../../pages/User';
 
 import * as Styled from './styles';
 
-const HEADER_HEIGHT = 72;
+const HEADER_HEIGHT = 66;
 const FOOTER_HEIGHT = 40;
 
 const enhancer = withToggle('isOverlayOpen');
 
 const App = ({ isOverlayOpen, onToggle }) => (
   <Styled.AppWrapper>
-    <Styled.Header height={HEADER_HEIGHT}>
-      <Styled.Nav>
-        <li>
-          <NavLink exact to="/">
-            Organizations
-          </NavLink>
-        </li>
-        <li>
-          <NavLink exact to="/repos">
-            Repos
-          </NavLink>
-        </li>
-      </Styled.Nav>
-      <Search />
-    </Styled.Header>
+    <AppMenu />
     <Styled.MainWrapper marginTop={HEADER_HEIGHT}>
       <Styled.Main>
         <Switch>
           <Route path="/" exact component={Organizations} />
           <Route path="/repos" exact component={Repos} />
-          <Route component={() => <div>NOT FOUND!</div>} />
+          <Route component={() => <Redirect to="/" />} />
         </Switch>
       </Styled.Main>
       <Media query="(max-width: 767px)">
