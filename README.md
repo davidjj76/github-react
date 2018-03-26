@@ -8,6 +8,18 @@ npm install
 npm start
 ```
 
+## With docker
+
+Build and start container
+```sh
+docker-compose up -d --build
+```
+
+Stop the container
+```sh
+docker-compose stop
+```
+
 ## Production
 ```sh
 npm run build
