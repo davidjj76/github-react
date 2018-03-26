@@ -15,7 +15,7 @@ Build and start container
 docker-compose up -d --build
 ```
 
-Stop the container
+Stop container
 ```sh
 docker-compose stop
 ```
