@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, Divider, Grid, Icon, Image, Statistic } from 'semantic-ui-react';
+import {
+  Card,
+  Divider,
+  Grid,
+  Icon,
+  Image,
+  Segment,
+  Statistic,
+} from 'semantic-ui-react';
+import * as Styled from './styles';
 
 const renderActivity = ({
   followers,
@@ -56,46 +65,48 @@ const User = ({
     public_repos,
   },
 }) => (
-  <Card centered className="user">
-    <Image src={avatar_url} />
-    <Card.Content as="a" href={html_url}>
-      <Card.Header>{name}</Card.Header>
-      <Card.Meta>
-        <span className="login">{login}</span>
-      </Card.Meta>
-    </Card.Content>
-    <Card.Content>
-      <span className="date">
-        <Icon name="calendar outline" />
-        Joined in {new Date(created_at).getFullYear()}
-      </span>
-    </Card.Content>
-    {company && (
+  <Segment basic padded>
+    <Styled.UserCard centered>
+      <Image src={avatar_url} />
+      <Card.Content as="a" href={html_url}>
+        <Card.Header>{name}</Card.Header>
+        <Card.Meta>
+          <span>{login}</span>
+        </Card.Meta>
+      </Card.Content>
       <Card.Content>
-        <span className="login">
-          <Icon name="building outline" />
-          {company}
+        <span className="date">
+          <Icon name="calendar outline" />
+          Joined in {new Date(created_at).getFullYear()}
         </span>
       </Card.Content>
-    )}
-    {location && (
-      <Card.Content>
-        <span className="location">
-          <Icon name="marker" />
-          {location}
-        </span>
+      {company && (
+        <Card.Content>
+          <span>
+            <Icon name="building outline" />
+            {company}
+          </span>
+        </Card.Content>
+      )}
+      {location && (
+        <Card.Content>
+          <span>
+            <Icon name="marker" />
+            {location}
+          </span>
+        </Card.Content>
+      )}
+      <Card.Content textAlign="center">
+        <Card.Header>Activity</Card.Header>
+        {renderActivity({
+          followers,
+          following,
+          public_gists,
+          public_repos,
+        })}
       </Card.Content>
-    )}
-    <Card.Content textAlign="center">
-      <Card.Header>Activity</Card.Header>
-      {renderActivity({
-        followers,
-        following,
-        public_gists,
-        public_repos,
-      })}
-    </Card.Content>
-  </Card>
+    </Styled.UserCard>
+  </Segment>
 );
 
 User.propTypes = {
