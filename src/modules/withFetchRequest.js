@@ -4,15 +4,17 @@ import {
   lifecycle,
   mapProps,
   renderComponent,
+  renderNothing,
 } from 'recompose';
 
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+
+import complement from '../utils/complement';
 import empty from '../utils/empty';
 import pickAll from '../utils/pickAll';
 import pipe from '../utils/pipe';
 import prop from '../utils/prop';
-
 const mapData = pickAll('data');
 const mapLoading = empty();
 const mapError = pickAll('error');
@@ -23,6 +25,8 @@ const renderLoader = loader =>
 
 const hasError = pipe(prop('error'), Boolean);
 const renderError = compose(mapProps(mapError), renderComponent(Error));
+
+const hasData = pipe(prop('data'), Boolean);
 
 const withFetchRequest = (config = { loader: Loader }) =>
   compose(
@@ -40,6 +44,7 @@ const withFetchRequest = (config = { loader: Loader }) =>
     }),
     branch(isLoading, renderLoader(config.loader)),
     branch(hasError, renderError),
+    branch(complement(hasData), renderNothing),
     mapProps(mapData),
   );
 
