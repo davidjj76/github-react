@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Organizations = ({ data }) => (
-  <div>
-    <div>ORGANIZATIONS</div>
-    <div>
-      {data &&
-        JSON.stringify(
-          data.map(r => ({
-            avatar_url: r.avatar_url,
-            description: r.description,
-            login: r.login,
-            url: r.url,
-          })),
-        )}
-    </div>
-  </div>
+import { Card, Header, Image, Segment } from 'semantic-ui-react';
+
+const Organizations = ({ data: organizations }) => (
+  <Segment basic padded>
+    <Header as="h2">Organizations</Header>
+    <Card.Group itemsPerRow={4}>
+      {organizations.map(({ avatar_url, description, login, url }) => (
+        <Card
+          header={login}
+          description={description}
+          href={url}
+          image={avatar_url}
+        />
+      ))}
+    </Card.Group>
+  </Segment>
 );
 
 Organizations.propTypes = {
