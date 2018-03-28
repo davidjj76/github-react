@@ -7,11 +7,10 @@ const Organizations = ({ data: organizations }) => (
   <Segment basic padded>
     <Header as="h2">Organizations</Header>
     <Card.Group itemsPerRow={4}>
-      {organizations.map(({ avatar_url, description, id, login, url }) => (
+      {organizations.map(({ avatar_url, description, id, login }) => (
         <Card
           description={description}
           header={login}
-          href={url}
           image={avatar_url}
           key={id}
         />

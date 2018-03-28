@@ -8,11 +8,11 @@ const Repos = ({ data: respositories }) => (
     <Header as="h2">Repositories</Header>
     <List divided relaxed size="large">
       {respositories.map(
-        ({ description, fork, forks_count, id, name, url }) => (
+        ({ description, fork, forks_count, id, name, html_url }) => (
           <List.Item key={id}>
             <List.Icon name="github" size="big" verticalAlign="middle" />
             <List.Content>
-              <List.Header as="a" href={url}>
+              <List.Header as="a" href={html_url}>
                 {name}
               </List.Header>
               <List.Description>{description}</List.Description>
