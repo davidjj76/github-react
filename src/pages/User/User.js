@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import {
   Card,
-  Divider,
   Grid,
+  Header,
   Icon,
   Image,
   Segment,
@@ -66,6 +66,7 @@ const User = ({
   },
 }) => (
   <Segment basic padded>
+    <Header as="h2">User profile</Header>
     <Styled.UserCard centered>
       <Image src={avatar_url} />
       <Card.Content as="a" href={html_url}>
