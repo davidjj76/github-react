@@ -8,7 +8,15 @@ const Repos = ({ data: respositories }) => (
     <Header as="h2">Repositories</Header>
     <List divided relaxed size="large">
       {respositories.map(
-        ({ description, fork, forks_count, id, name, html_url }) => (
+        ({
+          description,
+          fork,
+          forks_count,
+          id,
+          name,
+          html_url,
+          stargazers_count,
+        }) => (
           <List.Item key={id}>
             <List.Icon name="github" size="big" verticalAlign="middle" />
             <List.Content>
@@ -16,6 +24,10 @@ const Repos = ({ data: respositories }) => (
                 {name}
               </List.Header>
               <List.Description>{description}</List.Description>
+              <Label>
+                <Icon name="star" />
+                {stargazers_count}
+              </Label>
               {fork && (
                 <Label>
                   <Icon name="fork" />
